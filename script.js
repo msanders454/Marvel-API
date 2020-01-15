@@ -8,12 +8,68 @@ var characterID = "";
 
 
 function submitButton(){
-	$('#submitButton').on('click', function(event){
+	$('.searchForm').on('submit', function(event){
     	event.preventDefault();
-    	let query = $('.searchBar').val();
-    	$('.searchBar').val("");
-    	getAPIData_Characters(query, displayAPIData_Chars);
-    	$('.searchForm').hide();
+
+
+$('.search-results').html(``);
+
+const queryTarget = $(event.currentTarget).find('input');
+    const queryTerm = (queryTarget.val());
+    console.log('I have data');
+    console.log(queryTerm);
+
+    if(queryTerm === ''){
+      alert('Please write something');
+      $('.search-results-section').css('display', 'none');
+    }
+
+      const query1 = {
+      'ts': ts,
+      'hash': hash,
+      'nameStartsWith': queryTerm,
+      'limit': 10,
+      'apikey': publicKey,
+    };
+ $.getJSON(marvelAPIURL, query1, displaySearchResults);
+
+    queryTarget.val("");
+  });
+}
+
+function displaySearchResults(data) {
+  const list = data.data.results;
+  if (list.length === 0 ) {
+$('.search-results').append(`
+      <div class="search-result">
+        Character not found. Please search again.
+      </div>
+    `);
+  }
+
+  $('.search-results-section').css('display', 'block');
+
+  for (let i = 0; i < list.length; i++) {
+    $('.search-results').append(`
+      <div class="search-result">
+        <a href="#" class="result-name">${list[i].name}</a>
+      </div>
+    `);
+  }
+}
+
+function watchResultClick() {
+  $(document).on('click', '.result-name', function(event) {
+    event.preventDefault();
+
+    const queryTarget = $(event.currentTarget);
+    const queryTerm = (queryTarget.html());
+console.log(queryTerm);
+    console.log(queryTarget);
+    $('.search-results-section').css('display', 'none');
+
+    getAPIData_Characters(queryTerm, displayAPIData_Chars);
+$('.searchForm').hide();
       $('.results').css('display', 'block');
     	$('.newSearchButton').css('display', 'block');
     	$('.thumbnailContainer').css('display', 'block');
@@ -21,8 +77,11 @@ function submitButton(){
     	$('.descriptionContainer').css('display', 'block');
     	$('.comicsContainer').css('display', 'block');
        $('.url').css('display', 'block');
+    
   });
 }
+
+
 
 function submitButtonRandom(){
 	$('#submitButtonRandom').on('click', function(event){
@@ -30,6 +89,7 @@ function submitButtonRandom(){
     	let randomLetter = randomChar();
     	getAPIData_Characters_Random(randomLetter, displayAPIData_Chars);
     	$('.searchForm').hide();
+      $('.search-results-section').hide();
       $('.results').css('display', 'inline-block');
     	$('.newSearchButton').css('display', 'block');
     	$('.thumbnailContainer').css('display', 'block');
@@ -51,9 +111,10 @@ function newSearch(){
     $('.url').empty();
 		$('#resultsTitle').empty();
     $('.results').css('display', 'none');
-		$('.newSearchButton').css('display', 'none');
+    $('.newSearchButton').css('display', 'none');
     $('.shield').css('display', 'none');
 		$('.thumbnailContainer').css('display', 'none');
+    
 		$('.descriptionContainer').css('display', 'none');
     	$('.comicsContainer').css('display', 'none');
       $('.url').css('display', 'none');
@@ -63,7 +124,7 @@ function newSearch(){
 
 function getAPIData_Characters(searchTerm, callback){
   const query = {
-  		'name': `${searchTerm}`,
+  		'name': searchTerm,
     	'ts': ts,
     	'apikey': publicKey,
     	'hash': hash
@@ -88,7 +149,9 @@ function displayAPIData_Chars(data){
     return;
   }
   if(data.data.results.length>1){
-    let randomNum = getRandomIntTwo(0, data.data.results.length);
+    let randomNum = getRandomIntTwo(0, (data.data.results.length-1));
+
+    console.log(data.data.results[randomNum].description);
 
 	let description = data.data.results[randomNum].description;
 
@@ -100,8 +163,7 @@ let name = data.data.results[randomNum].name;
 	let output = '<img src="' + imgPath + '">';
 	characterID = data.data.results[randomNum].id;
 
-
-	if(description === ""|| description === 'undefined'){
+	if(!description){
 		$('#resultsTitle').append(data.data.results[randomNum].name);
 		$('.thumbnailContainer').append(output);
 		let noDescription = "Marvel does not provide a description for this character. Try clicking on the link below";
@@ -120,9 +182,8 @@ let name = data.data.results[randomNum].name;
 		$('.comicSeries').append("<li>"+ data.data.results[randomNum].series.items[i].name + "</li>");
     }
 
-
 if(data.data.results[randomNum].urls[1].type === 'wiki'){
-$('.url').append("<a href='" + data.data.results[randomNum].urls[1].url + "'>Please Click Here for more information on this character");
+$('.url').append("<a href='" + data.data.results[randomNum].urls[1].url + "' target='_blank'>Please Click Here for more information on this character");
 }
 
 else{
@@ -162,9 +223,9 @@ let name = data.data.results[0].name;
 		$('.comicSeries').append("<li>"+ data.data.results[0].series.items[i].name + "</li>");
     }
 
-
+console.log(data.data.results[0].urls);
 if(data.data.results[0].urls[1].type === 'wiki'){
-$('.url').append("<a href='" + data.data.results[0].urls[1].url + "'>Please Click Here for more information on this character");
+$('.url').append("<a href='" + data.data.results[0].urls[1].url + "' ' target='_blank'>Please Click Here for more information on this character");
 }
 
 else{
@@ -193,6 +254,7 @@ function getRandomIntTwo(min, max) {
 
 
 function start(){
+  watchResultClick()
 	submitButton();
 	submitButtonRandom();
 	newSearch();

@@ -34,6 +34,16 @@ body{
     border-width: 5px;
   }
   
+  .search-results-section{
+    font-size: 20px; 
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(197, 189, 189, 0.829);
+    width: 80%;
+   margin-left: 10%;
+   text-align: center;
+  }
+  
   .results{
   border: 5px solid black;
   border-radius: 10px;
