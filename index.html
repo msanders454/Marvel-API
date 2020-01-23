@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <html lang="en-US">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Marvel API Hack</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Marvel" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js"></script>
-  <script src="script.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Marvel" />
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js"></script>
+    <script src="script.js"></script>
   </head>
 
   <body>
@@ -19,49 +20,46 @@
 
     <main>
       <h1>MARVEL Character Dex</h1>
-
+      
     	<form class="searchForm">
         <input type="text" class="searchBar">
         <div>
-        	<button type="submit" id="submitButton">Search</button>
-        	<button type="submit" id="submitButtonRandom">Random Search</button>
+        	<button type="submit" id="searchButton">Search</button>
+        	<button type="submit" id="searchButtonRandom">Random Search</button>
         </div>
       </form>
 
-      <section class='search-results-section' hidden>
-      <div class='search-results-title'>
-        <u>Search Results</u>
-        <br>
-      </div>
-      <div class='search-results'>
-      </div>
-    </section>
-
-<div class = 'results'>
-
-  <section class='main-unknown-section' aria-live='assertive'>
-
-        <div class='unknown-section'></div>
-      </section>
-      <div class = 'shield'><img src="https://i.pinimg.com/originals/9c/88/d1/9c88d167fbe4409252c9c1ad92adbe98.png" alt="shield-Logo" class = 'shield-logo' ><div class = 'shield-word'>S.H.I.E.L.D Intellengence
-      </div>
-      </div>
-
-
-     	<h2 id="resultsTitle"></h2>
-
-      <div class="thumbnailContainer"></div>
-
-      <div class="descriptionContainer">
-      	<p class="characterDescription"></p>
-      </div>
-
-  
-      <div class="comicsContainer">
-        <div class = "comicsAppear">
-          <h3>Number of comic apperances</h3>
-          <p class="numberOfComics"></p>
+      <section class='searchResults' hidden>
+        <div class='searchTitle'>
+          <u>Search Results</u>
+          <br>
         </div>
+        <div class='searchList'>
+        </div>
+      </section>
+
+
+      <section class = 'results'>
+
+        <div class = 'shield'><img src="https://i.pinimg.com/originals/9c/88/d1/9c88d167fbe4409252c9c1ad92adbe98.png" alt="shield-Logo" class = 'shield-logo' >
+          <div class = 'shield-word'>S.H.I.E.L.D Intellengence
+          </div>
+        </div>
+
+
+     	  <h2 id="resultsTitle"></h2>
+
+        <div class="thumbnailContainer"></div>
+
+        <div class="descriptionContainer">
+      	  <p class="characterDescription"></p>
+        </div>
+
+        <div class="comicsContainer">
+          <div class = "comicsAppear">
+            <h3>Number of comic apperances</h3>
+            <p class="numberOfComics"></p>
+          </div>
 
         <div class = "seriesAppear">
           <h3>Examples</h3>
@@ -69,16 +67,16 @@
             </ul>
         </div>
         </div>
-</div>
+      </section>
 
-        <div class = "characterURL">
+      <section class = "characterURL">
           <p class="url"></p>
-        </div>
+      </section>
       
         
-      	<form class = 'newSearchButton'>
-      		<button type="submit" id="newSearchButton">New Search</button>      	
-      	</form>
+      <form class = 'newSearchButton'>
+      	<button type="submit" id="newSearchButton">New Search</button>      	
+      </form>
     </main>
 
     <footer class ="copyRight">
