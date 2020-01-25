@@ -1,18 +1,16 @@
 # Marvel-API
 
-# Marvel-API
-
 Intro
 
 A responsive website site that pulls data from Marvel's API, https://www.marvel.com/, and presents information on the many characters in the Marvel Universe.
 
 Screenshots
 
-![](images/App-HomePage.png)
+<img src="App-HomePage.png" width="500"/>
 
 This image is the homescreen for the app.
 
-![](images/Character-Data.png)
+<img src="Character-Data.png" width="500"/>
 
 This image is the date that will be displayed for the characters.
 
