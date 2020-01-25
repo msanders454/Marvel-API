@@ -33,19 +33,10 @@ else{
       alert(`Something went wrong: ${err.message}`);
   })
   }
+  //Used to empty search box after results load
     queryEvent.val("");
   });
 }
-
-//Api submitted in order to find characters by name
- /* const query1 = {
-      'ts': ts,
-      'hash': hash,
-      'nameStartsWith': queryTerm,
-      'limit': 15,
-      'apikey': publicKey,
-    };
-  $.getJSON(marvelAPIURL, query1, displaySearchResults);*/
 
 //Function used to display user search opitions.
 function displaySearchResults(data) {
@@ -59,9 +50,9 @@ function displaySearchResults(data) {
       </div>
     `);
   }
-  //Makes Resulst not hidden
+  //Makes Results not hidden
   $('.searchResults').css('display', 'block');
-
+//Displays json data for user to click
   for (let i = 0; i < list.length; i++) {
     $('.searchList').append(`
       <div class="search-result">
@@ -101,7 +92,7 @@ function searchButtonRandom(){
 	$('#searchButtonRandom').on('click', function(event){
     	event.preventDefault();
     	let randomLetter = randomChar();
-    	getAPIData_Characters_Random(randomLetter, displayAPIData_Chars);
+    	getAPIData_Characters_Random(randomLetter, displayAPIData_CharsRandom);
     	$('.searchForm').hide();
       $('.searchResults').hide();
       $('.results').css('display', 'inline-block');
@@ -155,7 +146,7 @@ function getAPIData_Characters_Random(randomLetter, callback){
   $.getJSON(marvelAPIURL, query, callback);
 }
 //Function used to display API data First part displays random resulst
-function displayAPIData_Chars(data){
+function displayAPIData_CharsRandom(data){
   let charcterData = data.data.results.length;
   if(charcterData>1){
     let randomNum = getRandomIntTwo(0, (charcterData-1));
@@ -195,8 +186,9 @@ function displayAPIData_Chars(data){
   }
    
 }
+}
 //Used when for submit opition
-else{
+function displayAPIData_Chars(data){
 	let description = data.data.results[0].description;
   let name = data.data.results[0].name;
 	let imgPath = data.data.results[0].thumbnail.path + "/standard_xlarge." + data.data.results[0].thumbnail.extension;
@@ -228,7 +220,7 @@ else{
     $('.url').append("No Marvel page on this character. Please try another character.");
     }
   }
-}
+
 
 //Function to find random letter
 function randomChar(){
