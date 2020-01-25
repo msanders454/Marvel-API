@@ -6,11 +6,11 @@ A responsive website site that pulls data from Marvel's API, https://www.marvel.
 
 Screenshots
 
-<img src="App-HomePage.png" width="500"/>
+<img src="Images/App-HomePage.png" width="500"/>
 
 This image is the homescreen for the app.
 
-<img src="Character-Data.png" width="500"/>
+<img src="Images/Character-Data.png" width="500"/>
 
 This image is the date that will be displayed for the characters.
 
