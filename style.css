@@ -57,10 +57,22 @@ padding: 5px;
   border-style: solid;
   border-width: 3px;
 }
+
+#newSearchButton{
+  width: 35%;
+  font-size: 12px;
+   border: black;
+  border-style: solid;
+  border-width: 3px;
+}
 #searchButton:hover {
   background-color: rgba(241, 143, 143, 0.151);
 }
 #searchButtonRandom:hover {
+  background-color: rgba(241, 143, 143, 0.151);
+}
+
+#newSearchButton:hover {
   background-color: rgba(241, 143, 143, 0.151);
 }
 
@@ -184,5 +196,18 @@ h1{
   padding: 5px;
 }
 
+#newSearchButton{
+  width: 35%;
+  font-size: 20px;
+  padding: 5px;
 }
 
+}
+
+@media only screen and (min-width: 1001px) {
+ .spider-man{
+  position: absolute;
+  width:25%;
+  height: auto;
+}
+}
