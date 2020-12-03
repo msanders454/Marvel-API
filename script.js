@@ -1,6 +1,5 @@
-import {dotenv} from './module.js'
-dotenv.config()
-const privateKey = process.env.privateKey
+
+const privateKey = config.privateKey
 //Marvel API Gateway
 const marvelAPIURL = 'https://gateway.marvel.com/v1/public/characters?';
 
