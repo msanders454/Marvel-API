@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/msanders454/Marvel-Api#readme",
   "dependencies": {
+    "config": "^3.3.3",
     "dotenv": "^8.2.0"
   }
 }
