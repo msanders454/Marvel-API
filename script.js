@@ -1,3 +1,4 @@
+var requirejs = require('requirejs');
 require('dotenv').config()
 const privateKey = process.env.PRIVATEKEY
 //Marvel API Gateway
