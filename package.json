@@ -1,0 +1,22 @@
+{
+  "name": "marvel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msanders454/Marvel-Api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msanders454/Marvel-Api/issues"
+  },
+  "homepage": "https://github.com/msanders454/Marvel-Api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
