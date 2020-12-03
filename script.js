@@ -1,5 +1,5 @@
-
-const privateKey = config.privateKey
+require('dotenv').config()
+const privateKey = process.env.PRIVATEKEY
 //Marvel API Gateway
 const marvelAPIURL = 'https://gateway.marvel.com/v1/public/characters?';
 
