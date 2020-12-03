@@ -1,10 +1,10 @@
 
-const privateKey = config.privateKey
+//const privateKey = config.privateKey
 //Marvel API Gateway
 const marvelAPIURL = 'https://gateway.marvel.com/v1/public/characters?';
 
 //Private and Public Keys
-//const privateKey = 'd6e4ae1a3f11ff88b50ee1638b26cef725dc7b5b';
+const privateKey = 'd6e4ae1a3f11ff88b50ee1638b26cef725dc7b5b';
 const publicKey = '9e4d4d6d9251b1ecce38840bcb323b5d';
 
 //Parameters need
